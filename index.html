@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>threejs</title>
+  <!-- Import Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Sankofa+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+      font-family: 'Sankofa Display', cursive;
+      font-weight: 900;
+      background: linear-gradient(to , rgb(201, 100, 117), rgb(228, 93, 21)); /* Gradient background */
+    }
+
+    /* 进度条css样式 */
+    #container {
+      position: absolute;
+      width: 400px;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      margin-left: -200px;
+      margin-top: -8px;
+      border-radius: 8px;
+      border: 1px solid #009999;
+      overflow: hidden;
+    }
+
+    #per {
+      height: 100%;
+      width: 0;
+      background: #00ffff;
+      color: #00ffff;
+      line-height: 15px;
+    }
+
+    /* Custom font style */
+    .custom-font {
+      font-family: 'Sankofa Display', cursive;
+      color: rgb(197, 176, 181); /* Ensure the text is visible on the screen */
+      font-size: 46px; /* Adjust font size as needed */
+      font-weight: bolder;
+    }
+
+    /* Audio control button */
+    #audio-control {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-family: 'Sankofa Display', cursive;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Style for the image overlay */
+    #image-overlay {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%; /* Increase the width to make the image bigger */
+      height: auto;
+      pointer-events: none; /* Prevent interference with other elements */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 进度条html代码 -->
+  <div id="container">
+    <!-- 进度条 -->
+    <div id="per"></div>
+  </div>
+
+  <!-- Image overlay -->
+  <img id="image-overlay" src="model/image.png" alt="Screen Decoration">
+
+  <!-- type="importmap"功能：.html文件中也能和nodejs开发环境中一样方式，引入npm安装的js库 -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./three.js-r139/build/three.module.js",
+        "three/addons/": "./three.js-r139/examples/jsm/"
+      }
+    }
+  </script>
+
+  <audio id="background-audio" loop>
+    <source src="model/music1.MP3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button id="audio-control">Play Audio</button>
+  
+  <script src="./index.js" type="module"></script>
+</body>
+</html>
